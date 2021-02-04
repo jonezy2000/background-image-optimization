@@ -1,0 +1,43 @@
+/* Start with the smallest size first - serve a scaled-down version of the background imgage to be conscious of page load speed and bandwidth  */
+/* The original image is 4460px x 2973 px and 950KB. Use Photoshop (or squoosh.app) to resize the image down to 600px x 400px and run it through a compression tool to reduce the file size. */
+header {
+    height: 400px;
+    padding: 2rem;
+    background-color: #eff2f7;
+    /* use shorthand for background-image, background-position (x & y), background-size (cover for full screen), background repeat. Note: background-size may be included in the shorthand but it must come immediately after background-position and separted with a / character  */
+    background: url(../img/small-bg.jpg) center bottom / cover no-repeat;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+/* As the screen gets wider, the background image stretches to fit and the lower quality of the image no longer looks good on the screen. We can use media queries to swap out the background image for a larger & higher quality file size. */
+@media only screen and (min-width: 850px){
+    header {
+        /* Again, use Photoshop to resize and compress the original photo.  Size this medium background image to 1200px x 800px*/
+        /* Using the same shorthand property as we did above, simply replace the image url */
+        background: url(../img/med-bg.jpg) center bottom / cover no-repeat;
+    }
+
+    h1 {
+        /* automatically increasing font size */
+        font-size: calc(2.5rem + 2vw);
+    }
+}
+
+/* Adjust the background image (height or positioning) as needed */
+@media only screen and (min-width: 1000px){
+    header {
+        height: 500px;
+    }
+}
+
+/* Use Photoshop to resize and compress a full screen background image for wide screens. Save this one at a higher quality level as it will stretch beyond it's cropped width. Current reccommendations are to keep full screen hero and background images under 250KB */
+@media only screen and (min-width: 1500px){
+    header {
+        background: url(../img/lg-bg.jpg) center bottom / cover no-repeat;
+        height: 700px;
+    }
+}
